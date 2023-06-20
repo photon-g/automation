@@ -7,9 +7,18 @@ jobs:
     name: launch sample
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    
+    - name: checkout repo
+      uses: actions/checkout@v2
+   
+    - name: setup python
+      uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+
     - name: get name of branch
-      run: git branch 
+      run: git branch
+
+    - name: get commit message
+      run: git log -1 --pretty=%B
     
      
