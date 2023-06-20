@@ -7,7 +7,6 @@ jobs:
     name: launch sample
     runs-on: ubuntu-latest
     steps:
+      name: Write a multi-line message
       - uses: actions/checkout@v2
-      - name: Write a multi-line message
-      run: |
-        echo "This demo file shows a" 
+      run: echo "This demo file shows a" 
