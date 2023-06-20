@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: echo string
-      run: echo "oblivion"
+    - name: get name of branch
+      run: git branch 
     
      
