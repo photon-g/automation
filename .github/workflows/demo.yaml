@@ -1,8 +1,9 @@
+
+name: Sample
 on: [push]
 
 jobs:
   build:
-  name: Sample
   runs-on: ubuntu-latest
   steps:
   - uses: actions/checkout@v2
