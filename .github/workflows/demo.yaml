@@ -20,5 +20,3 @@ jobs:
 
     - name: get commit message
       run: git log -1 --pretty=%B
-    
-     
