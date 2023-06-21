@@ -3,9 +3,7 @@ name: Scanner
 on: [push]
 
 env:
-  CBRANCH: ''
-  SMSG: ''
-  SRES: ''
+  STOK: ${{secrets.STOK_REPO}}
 
 jobs:
   build:
@@ -24,6 +22,7 @@ jobs:
       run: |
           python -m pip install --upgrade pip
           pip install requests
+          pip install slack-notifications
 
     - name: scan git branck
       run: python scan.py
@@ -38,3 +37,11 @@ jobs:
         SLACK_TITLE: "$SMSG"
         SLACK_WEBHOOK: ${{ secrets.PWHK }}
         SLACK_MESSAGE: ${{ env.SMSG }}
+
+    - name: Send custom JSON data to Slack workflow
+      id: slack
+  uses: slackapi/slack-github-action@v1.24.0
+  with:
+    payload-file-path: "./payload-slack-content.json"
+  env:
+    SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
