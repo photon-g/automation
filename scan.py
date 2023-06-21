@@ -1,7 +1,7 @@
 
 import os
 import sys
-import log
+#import logging
 
 def analyze(msg:str,token:str="EM") -> bool:
     if token in msg:
