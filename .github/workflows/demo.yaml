@@ -4,8 +4,7 @@ on: [push]
 
 env:
   CBRANCH: ''
-  CMSG: ''
-  ERRMSG: ''
+  SMSG: ''
 
 jobs:
   build:
@@ -39,8 +38,4 @@ jobs:
       env:
         SLACK_TITLE: dry run 
         SLACK_WEBHOOK: ${{ secrets.PWHK }}
-
-        ${{ if eq(env.ERRMSG,'')}}: 
-          SLACK_MESSAGE: ${{ env.CBRANCH }}
-        ${{ else }}:
-          SLACK_MESSAGE: ${{ env.ERRMSG }} 
+        SLACK_MESSAGE: ${{ env.SMSG }}

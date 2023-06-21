@@ -28,9 +28,9 @@ if __name__ == '__main__':
     commit_msg = subprocess.getoutput("git log -1 --pretty=%B")
 
     if not analyzes(current_branch):
-        os.environ['ERRMSG']='the name of the branch is not correct'
+        os.environ['SMSG']='the name of the branch is not correct'
         log_error_n_abort('the name of the branch is not correct')
     
-    os.environ['CBRANCH']=current_branch
+    os.environ['SMSG']=current_branch
     #if not analyze(commit_msg):
     #    log_error_n_abort('the commit message is not correct')
