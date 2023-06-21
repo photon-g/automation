@@ -29,7 +29,6 @@ if __name__ == '__main__':
 
     print(current_branch)
     print(commit_msg)
-
     if not analyzes(current_branch):
         os.environ['SMSG']='the name of the branch is not correct'
         os.environ['BUFFER']='the name of the branch is not correct'
