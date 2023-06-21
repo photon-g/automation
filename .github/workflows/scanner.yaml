@@ -12,5 +12,5 @@ jobs:
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.STOK_REPO }}
           slack-channel: C05E6AR5HDF 
-          slack-text: Hello! Something is burning! Or not...
-          slack-optional-icon_emoji: ":fire:"
+          slack-text: ${{ secrets.BUFFER }}
+          slack-optional-icon_emoji: ":red:"
