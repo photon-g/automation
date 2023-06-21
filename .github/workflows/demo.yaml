@@ -16,7 +16,10 @@ jobs:
         python-version: '3.10' # install the python version needed
 
     - name: get name of branch
-      run: git branch
+      run: export GIT_B=`git branch`
 
     - name: get commit message
-      run: git log -1 --pretty=%B
+      run: export GIT_C=`git log -1 --pretty=%B`
+    
+    - name: scan git branch
+      run: python scan.py
