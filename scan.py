@@ -26,7 +26,7 @@ def log_error_n_abort(msg:str) -> None:
 
 if __name__ == '__main__':
 
-    slack = Slack('xoxb-5061818740423-5445173618912-IeYFEewFzqH0xNt3ePry7mHn')
+    slack = Slack(os.environ['NVAR'])
     current_branch = subprocess.getoutput("git branch --show-current")
     commit_msg = subprocess.getoutput("git log -1 --pretty=%B")
 

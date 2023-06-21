@@ -2,6 +2,9 @@
 name: Sample
 on: [push]
 
+env:
+  NVAR: ${{secret.SLACK_DASHBOARD}}
+
 jobs:
   build:
     name: launch sample
