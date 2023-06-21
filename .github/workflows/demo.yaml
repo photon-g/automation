@@ -28,6 +28,9 @@ jobs:
     - name: scan git branck
       run: python scan.py
 
+    - name: debug msg
+      run: echo $SMSG
+
     - name: slack notifier 
       uses: rtCamp/action-slack-notify@v2
     
