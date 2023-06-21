@@ -16,7 +16,7 @@ jobs:
         python-version: '3.10' # install the python version needed
 
     - name: get name of branch
-      run: export GIT_B=`git branch`
+      run: export GIT_B=`git branch --show-current`
 
     - name: echo b
       run: echo $GIT_B
