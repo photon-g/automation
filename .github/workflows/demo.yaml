@@ -3,7 +3,9 @@ name: Sample
 on: [push]
 
 env:
-  NVAR: ${{secrets.SLACK_DASHB}}
+  CBRANCH: ''
+  CMSG: ''
+  ERRMSG: ''
 
 jobs:
   build:
@@ -25,3 +27,20 @@ jobs:
 
     - name: scan git branch
       run: python scan.py
+
+  slackNotification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+    
+      env:
+        SLACK_TITLE: dry run 
+        SLACK_WEBHOOK: ${{ secrets.PWHK }}
+
+        ${{ if eq(env.ERRMSG,'')}}: 
+          SLACK_MESSAGE: ${{ env.CBRANCH }}
+        ${{ else }}:
+          SLACK_MESSAGE: ${{ env.ERRMSG }} 
