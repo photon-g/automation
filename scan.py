@@ -31,10 +31,10 @@ if __name__ == '__main__':
     commit_msg = subprocess.getoutput("git log -1 --pretty=%B")
 
     if not analyzes(current_branch):
-        slack.send_notify('#dashboard', username='UAT', text=FAILED.format('EM-X'))
+        slack.send_notify('#dashb', username='GBOT', text=FAILED.format('EM-X'))
         log_error_n_abort('the name of the branch is not correct')
 
-    slack.send_notify('#dashboard', username='UAT', text=SUCCESS.format('EM-X'))
+    slack.send_notify('#dashb', username='GBOT', text=SUCCESS.format('EM-X'))
 
     #if not analyze(commit_msg):
     #    log_error_n_abort('the commit message is not correct')

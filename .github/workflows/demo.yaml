@@ -3,7 +3,7 @@ name: Sample
 on: [push]
 
 env:
-  NVAR: ${{secrets.SLACK_DASHBOARD}}
+  NVAR: ${{secrets.SLACK_DASHB}}
 
 jobs:
   build:
