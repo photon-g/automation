@@ -7,5 +7,9 @@ jobs:
     name: launch sample
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      run: echo "This demo file shows a" 
+    - uses: actions/checkout@v2
+    
+    - name: echo string
+      run: echo "oblivion"
+    
+     
