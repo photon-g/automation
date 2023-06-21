@@ -29,12 +29,12 @@ jobs:
       run: python scan.py
 
     - name: debug msg
-      run: echo $SMSG
+      run: echo "$SMSG"
 
     - name: slack notifier 
       uses: rtCamp/action-slack-notify@v2
     
       env:
-        SLACK_TITLE: "${SMSG}"
+        SLACK_TITLE: "$SMSG"
         SLACK_WEBHOOK: ${{ secrets.PWHK }}
         SLACK_MESSAGE: ${{ env.SMSG }}
