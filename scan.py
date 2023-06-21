@@ -36,5 +36,6 @@ if __name__ == '__main__':
     
     os.environ['SMSG']=current_branch
 
+    print(os.environ['SMSG'])
     #if not analyze(commit_msg):
     #    log_error_n_abort('the commit message is not correct')
