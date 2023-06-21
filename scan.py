@@ -34,7 +34,6 @@ if __name__ == '__main__':
         os.environ['SMSG']='the name of the branch is not correct'
         os.environ['BUFFER']='the name of the branch is not correct'
         print(os.environ['BUFFER']) 
-        print(os.environ['SMSG'])
         log_error_n_abort('the name of the branch is not correct')
     else: 
         os.environ['SMSG']=current_branch
