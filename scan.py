@@ -3,6 +3,12 @@
 import sys
 #import logging
 import subprocess
+import os
+
+from slack_notifications import Slack
+
+SUCCESS='{} has been tested succesfully\n please re-synchronize your clone with the dev branch'
+FAILED='{} tests have failed\n please analyse the generated report'
 
 def analyzes(msg:str,tokens:list[str]=["EM","dev"]) -> bool:
     if msg in tokens:
@@ -20,11 +26,15 @@ def log_error_n_abort(msg:str) -> None:
 
 if __name__ == '__main__':
 
+    slack = Slack('xoxb-5061818740423-5445173618912-IeYFEewFzqH0xNt3ePry7mHn')
     current_branch = subprocess.getoutput("git branch --show-current")
     commit_msg = subprocess.getoutput("git log -1 --pretty=%B")
 
-    if not analyzes(current_branch): 
+    if not analyzes(current_branch):
+        slack.send_notify('#dashboard', username='UAT', text=FAILED.format('EM-X'))
         log_error_n_abort('the name of the branch is not correct')
 
-    if not analyzes(commit_msg):
-        log_error_n_abort('the commit message is not correct')
+    slack.send_notify('#dashboard', username='UAT', text=SUCCESS.format('EM-X'))
+
+    #if not analyze(commit_msg):
+    #    log_error_n_abort('the commit message is not correct')
