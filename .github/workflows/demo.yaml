@@ -25,7 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-    - name: scan git branch
+    - name: scan git branck
       run: python scan.py
 
     - name: slack notifier 

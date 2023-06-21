@@ -1,0 +1,16 @@
+name: x-scanner 
+on: [push]
+
+jobs:
+  slack-notification-with-optional-parameters:
+    runs-on: ubuntu-latest
+    name: slack msg
+    steps:
+      - name: Send message to Slack API
+        uses: archive/github-actions-slack@v2.0.0
+        id: notify
+        with:
+          slack-bot-user-oauth-access-token: ${{ secrets.STOK_REPO }}
+          slack-channel: C05E6AR5HDF 
+          slack-text: Hello! Something is burning! Or not...
+          slack-optional-icon_emoji: ":fire:"
