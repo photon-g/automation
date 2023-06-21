@@ -3,7 +3,7 @@ name: Scanner
 on: [push]
 
 env:
-  STOK: ${{secrets.STOK_REPO}}
+  STK: ${{secrets.PTBOT}}
 
 jobs:
   build:
