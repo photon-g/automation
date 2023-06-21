@@ -32,5 +32,6 @@ if __name__ == '__main__':
         log_error_n_abort('the name of the branch is not correct')
     
     os.environ['SMSG']=current_branch
+
     #if not analyze(commit_msg):
     #    log_error_n_abort('the commit message is not correct')
