@@ -27,6 +27,9 @@ if __name__ == '__main__':
     current_branch = subprocess.getoutput("git branch --show-current")
     commit_msg = subprocess.getoutput("git log -1 --pretty=%B")
 
+    print(current_branch)
+    print(commit_msg)
+
     if not analyzes(current_branch):
         os.environ['SMSG']='the name of the branch is not correct'
         log_error_n_abort('the name of the branch is not correct')
