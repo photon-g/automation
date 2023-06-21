@@ -16,6 +16,4 @@ jobs:
         SLACK_CHANNEL: general
         SLACK_MESSAGE: 'Post Content :rocket:'
         SLACK_TITLE: dry run 
-        SLACK_WEBHOOK: ${{ secrets.PBTOK }}
-
-
+        SLACK_WEBHOOK: ${{ secrets.PWHK }}
