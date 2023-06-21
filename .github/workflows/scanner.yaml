@@ -1,7 +1,7 @@
 name: x-scanner 
 on: [push]
 env:
-  RES:''
+  RES: ''
 
 jobs:
   slack-notification-with-optional-parameters:
