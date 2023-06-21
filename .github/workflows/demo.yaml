@@ -32,6 +32,6 @@ jobs:
       uses: rtCamp/action-slack-notify@v2
     
       env:
-        SLACK_TITLE: $${{env.SMSG}} 
+        SLACK_TITLE: ${{env.SMSG}}
         SLACK_WEBHOOK: ${{ secrets.PWHK }}
         SLACK_MESSAGE: ${{ env.SMSG }}
