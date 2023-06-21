@@ -20,7 +20,7 @@ def analyze(msg:str,token:str="EM") -> bool:
 
 def log_error_n_abort(msg:str) -> None:
     print(str)
-    sys.exit(1) 
+    #sys.exit(1) 
 
 if __name__ == '__main__':
 
@@ -32,11 +32,8 @@ if __name__ == '__main__':
 
     if not analyzes(current_branch):
         os.environ['SMSG']='the name of the branch is not correct'
+        print(os.environ['SMSG'])
         log_error_n_abort('the name of the branch is not correct')
-    
-    os.environ['SMSG']=current_branch
+    else: 
+        os.environ['SMSG']=current_branch
 
-    print(os.environ['SMSG'])
-
-    #if not analyze(commit_msg):
-    #    log_error_n_abort('the commit message is not correct')

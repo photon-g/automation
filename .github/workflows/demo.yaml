@@ -1,14 +1,15 @@
 
-name: Sample
+name: Scanner 
 on: [push]
 
 env:
   CBRANCH: ''
   SMSG: ''
+  SRES: ''
 
 jobs:
   build:
-    name: launch sample
+    name: push scanner
     runs-on: ubuntu-latest
     steps:
     - name: checkout repo
@@ -27,15 +28,10 @@ jobs:
     - name: scan git branch
       run: python scan.py
 
-  slackNotification:
-    name: Slack Notification
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Slack Notification
+    - name: slack notifier 
       uses: rtCamp/action-slack-notify@v2
     
       env:
-        SLACK_TITLE: dry run 
+        SLACK_TITLE: $${{env.SMSG}} 
         SLACK_WEBHOOK: ${{ secrets.PWHK }}
         SLACK_MESSAGE: ${{ env.SMSG }}

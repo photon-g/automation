@@ -13,6 +13,6 @@ jobs:
       uses: rtCamp/action-slack-notify@v2
     
       env:
-        SLACK_MESSAGE: 'push notification'
+        SLACK_MESSAGE: 'push notification :alert:'
         SLACK_TITLE: dry run 
         SLACK_WEBHOOK: ${{ secrets.PWHK }}
