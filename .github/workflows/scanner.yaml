@@ -19,5 +19,5 @@ jobs:
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.STOK_REPO }}
           slack-channel: C05E6AR5HDF 
-          slack-text: ${{ env.RES }} 
-          slack-optional-icon_emoji: ":red:"
+          slack-text: 'other test' 
+          slack-optional-icon_emoji: ":red_circle:"
