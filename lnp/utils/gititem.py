@@ -12,7 +12,7 @@ class GitItem:
             return self.__succes_msg,True
         return self.__failure_msg,False
 
-    def state_handler(msg:str,tokens:list[str]=["EM","dev"]) -> bool:
+    def state_handler(self,msg:str,tokens:list[str]=["EM","dev"]) -> bool:
         if msg in tokens:
             return True
         return False
