@@ -11,7 +11,7 @@ class Notifier:
     def __msg(self,chan,usr,payload) -> None:
         self.__slack.send_notify(chan,username=usr,text=payload)
 
-    def send_msg(item:GitItem) -> bool:
+    def send_msg(self,item:GitItem) -> bool:
         ret,msg=item.state_msg()
         self.__msg(self.__chan,self.__bot,msg)
         return ret
