@@ -1,44 +1,23 @@
 
-
 import sys
-#import logging
-import subprocess
 import os
-from slack_notifications import Slack
 
-SUCCESS='{} has been tested succesfully\n please re-synchronize your clone with the dev branch'
-FAILED='{} tests have failed\n please analyse the generated report'
+from lnp.utils.notifier import Notifier
+from lnp.utils.gitmgr import GitMgr
+from lnp.core.file_handler import FileHandler as fl
 
-def analyzes(msg:str,tokens:list[str]=["EM","dev"]) -> bool:
-    if msg in tokens:
-        return True
-    return False
-
-def analyze(msg:str,token:str="EM") -> bool:
-    if token in msg:
-        return True
-    return False
-
-def log_error_n_abort(msg:str) -> None:
-    print(str)
-    #sys.exit(1) 
-
+#this should be wrapped in a conf file
+CHAN='#photon-repo'
+BOT='PTBOT'
+GIT_ARTIFACTS_CONF="conf/gititem.json"
 
 if __name__ == '__main__':
-
-    slack = Slack(os.environ["STK"])
-    print(slack)
-    current_branch = subprocess.getoutput("git branch --show-current")
-    commit_msg = subprocess.getoutput("git log -1 --pretty=%B")
-
-    print(current_branch)
-    print(commit_msg)
-
-    if not analyzes(current_branch):
-        slack.send_notify('#photon-repo', username='PTBOT', text=FAILED.format('EM-X'))        
-        os.environ['SMSG']='the name of the branch is not correct'
-        os.environ['BUFFER']='the name of the branch is not correct'
-        print(os.environ['BUFFER']) 
-        log_error_n_abort('the name of the branch is not correct')
-    else: 
-        os.environ['SMSG']=current_branch
+    l_fl=fl(GIT_ARTIFACTS_CONF)
+    l_notifier = Notifier(CHAN,BOT,os.environ['STK'])
+    l_git_mgr = GitMgr(fl.read()) 
+   
+    if not l_notifier.send_msg(l_git_mgr.current_branch()):
+       sys.exit()
+    
+    if not l_notifier.send_msg(l_git_mgr.commit_mgs):
+        sys.exit()

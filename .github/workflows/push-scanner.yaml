@@ -1,5 +1,5 @@
 
-name: Scanner 
+name: push-scanner 
 on: [push]
 
 env:
@@ -7,7 +7,7 @@ env:
 
 jobs:
   build:
-    name: push scanner
+    name: scanner
     runs-on: ubuntu-latest
     steps:
     - name: checkout repo
@@ -21,8 +21,7 @@ jobs:
     - name: install python packages
       run: |
           python -m pip install --upgrade pip
-          pip install requests
           pip install slack-notifications
 
-    - name: scan git branck
-      run: python scan.py
+    - name: scan branch
+      run: python scan_poc.py
