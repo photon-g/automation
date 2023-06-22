@@ -7,7 +7,7 @@ class GitItem:
         self.__succes_msg=conf[success].format(self.__state)
         self.__failure_msg=conf[failure].format(self.__state)
 
-    def state_msg(self) -> tuple(str,bool):
+    def state_msg(self) -> (str,bool):
         if self.state_handler(self.__state): 
             return self.__succes_msg,True
         return self.__failure_msg,False
