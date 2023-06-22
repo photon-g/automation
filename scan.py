@@ -14,7 +14,7 @@ GIT_ARTIFACTS_CONF="conf/gititem.json"
 if __name__ == '__main__':
     l_fl=fl(GIT_ARTIFACTS_CONF)
     l_notifier = Notifier(CHAN,BOT,os.environ['STK'])
-    l_git_mgr = GitMgr(fl.read()) 
+    l_git_mgr = GitMgr(l_fl.read()) 
    
     if not l_notifier.send_msg(l_git_mgr.current_branch()):
        sys.exit()
