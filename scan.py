@@ -6,7 +6,7 @@ from lnp.utils.notifier import Notifier
 from lnp.utils.gitmgr import GitMgr
 from lnp.core.file_handler import FileHandler as fl
 
-#todo wrap this in a conf file
+#todo wrap this in a json file
 CHAN='#photon-repo'
 BOT='PTBOT'
 GIT_ARTIFACTS_CONF="conf/gititem.json"
