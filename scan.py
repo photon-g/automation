@@ -12,12 +12,11 @@ BOT='PTBOT'
 GIT_ARTIFACTS_CONF="conf/gititem.json"
 
 if __name__ == '__main__':
-    l_fl=fl(GIT_ARTIFACTS_CONF)
     l_notifier = Notifier(CHAN,BOT,os.environ['STK'])
-    l_git_mgr = GitMgr(l_fl.read()) 
+    l_git_mgr = GitMgr(GIT_ARTIFACTS_CONF) 
    
     if not l_notifier.send_msg(l_git_mgr.current_branch()):
        sys.exit()
     
-    if not l_notifier.send_msg(l_git_mgr.commit_mgs):
+    if not l_notifier.send_msg(l_git_mgr.commit_mgs()):
         sys.exit()
