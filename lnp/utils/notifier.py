@@ -2,6 +2,9 @@
 from slack_notifications import Slack
 from lnp.utils.gititem import GitItem
 
+import logging
+logger = logging.getLogger("scan")
+
 class Notifier:
     def __init__(self,channel,bot_name,token):
         self.__chan = channel
@@ -13,5 +16,6 @@ class Notifier:
 
     def send_msg(self,item:GitItem) -> bool:
         ret,msg=item.state_msg()
+        logger.debug(msg)
         self.__msg(self.__chan,self.__bot,msg)
         return ret

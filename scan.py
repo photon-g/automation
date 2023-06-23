@@ -1,15 +1,29 @@
 
 import sys
 import os
+import logging
+import logging.handlers
 
 from lnp.utils.notifier import Notifier
 from lnp.utils.gitmgr import GitMgr
 from lnp.core.file_handler import FileHandler as fl
 
-#todo wrap this in a conf file
+#todo wrap this in a json file
 CHAN='#photon-repo'
 BOT='PTBOT'
 GIT_ARTIFACTS_CONF="conf/gititem.json"
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+logger_file_handler = logging.handlers.RotatingFileHandler(
+    "status.log",
+    maxBytes=1024 * 1024,
+    backupCount=1,
+    encoding="utf8",
+)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger_file_handler.setFormatter(formatter)
+logger.addHandler(logger_file_handler)
 
 if __name__ == '__main__':
     l_notifier = Notifier(CHAN,BOT,os.environ['STK'])
