@@ -7,9 +7,14 @@ class GitMgr:
         self.__conf = fl(path_conf).read()
         self.__branch_item = gi(self.__conf["branch"], "cmd", "success", "failure")
         self.__msg_item = gi(self.__conf["msg"], "cmd", "success", "failure")
+        self.__author_item = gi(self.__conf["author"],"cmd")
 
     def current_branch(self) -> gi:
         return self.__branch_item
 
     def commit_msg(self) -> gi:
         return self.__msg_item
+
+    def author(self) -> gi:
+        return self.__author_item
+

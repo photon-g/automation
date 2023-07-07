@@ -27,19 +27,23 @@ logger.addHandler(logger_file_handler)
 if __name__ == "__main__":
     l_notifier = Notifier(CHAN, BOT, os.environ["STK"])
     l_git_mgr = GitMgr(GIT_ARTIFACTS_CONF)
-
+    
     if not l_notifier.send_msg(l_git_mgr.current_branch()):
         sys.exit(1)
 
     if not l_notifier.send_msg(l_git_mgr.commit_msg()):
         sys.exit(1)
 
-    if l_git_mgr.current_branch().get_id() != l_git_mgr.commit_msg().get_id():
-        branch = l_git_mgr.current_branch()
-        commit = l_git_mgr.commit_msg()
+    l_branch = l_git_mgr.current_branch()
+    l_commit = l_git_mgr.commit_msg()
+    l_author = l_git_mgr.author()
+
+    if l_branch.get_id() != l_commit.get_id():
         l_notifier.send_raw_msg(
             "the branch {} & \n the commit {} \n do not point to the same JIRA ticket".format(
-                branch.get_output(), commit.get_output()
+                l_branch.get_output(), l_commit.get_output()
             )
         )
         sys.exit(1)
+
+    l_notifier.send_raw_msg("\n {} has been pushed {} succesfully".format(l_author.get_output(),l_branch.get_output()))
