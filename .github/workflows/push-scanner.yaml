@@ -24,4 +24,4 @@ jobs:
           pip install slack-notifications
 
     - name: scan branch
-      run: python scan_poc.py
+      run: python scan.py
