@@ -5,7 +5,6 @@ import logging
 
 logger = logging.getLogger("scan")
 
-
 class Notifier:
     def __init__(self, channel, bot_name, token):
         self.__chan = channel
@@ -17,8 +16,9 @@ class Notifier:
 
     def send_msg(self, item: GitItem) -> bool:
         msg, ret = item.state_msg()
-        self.__msg(self.__chan, self.__bot, msg)
+        if not ret:
+            self.__msg(self.__chan, self.__bot, msg)
         return ret
 
-    def send_raw_msg(self, msg: str) -> bool:
-        self.__msg(self.__chan, self.__bot, msg)
+    def send_raw_msg(self, raw_msg: str) -> bool:
+        self.__msg(self.__chan, self.__bot, raw_msg)

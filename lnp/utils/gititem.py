@@ -27,10 +27,13 @@ class GitItem:
         if msg[0] == "E" and msg[1] == "M":
             pos_begin = msg.find(self.__tb)
             pos_end = msg.rfind(self.__te)
-            self__id = msg[pos_begin + 1 : pos_end]
+            self.__id = msg[pos_begin + 1 : pos_end]
             if self.__id.isalnum():
                 return True
         return False
+
+    def get_output(self) -> str:
+        return self.__state
 
     def get_id(self) -> str:
         return self.__id
