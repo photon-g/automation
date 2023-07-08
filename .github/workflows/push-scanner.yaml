@@ -24,4 +24,10 @@ jobs:
           pip install slack-notifications
 
     - name: scan branch
+      id: scan_branch
       run: python scan.py
+      continue-on-error: true
+
+    - name: scan cond
+      if: steps.scan_branch.outcome != 'success'
+      run: echo 'error detected'  
