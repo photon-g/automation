@@ -30,7 +30,7 @@ jobs:
 
     - name: scan cond
       if: steps.scan_branch.outcome != 'success'
-      run: echo 'error detected'
+      run: echo 'error detected in branch'
 
     - name: alternative 
       if: steps.scan_branch.outcome == 'success'
