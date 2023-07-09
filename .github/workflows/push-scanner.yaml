@@ -34,4 +34,15 @@ jobs:
 
     - name: alternative 
       if: steps.scan_branch.outcome == 'success'
-      run: echo running on branch ${GITHUB_REF##*/} 
+      run: echo running on branch ${GITHUB_REF##*/}
+
+  merge:
+    needs: build
+    name: decoy
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
+
+    - name: displayer
+      run: echo "to oblivion"
