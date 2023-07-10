@@ -31,7 +31,10 @@ jobs:
 
     - name: scan cond
       if: steps.scan_branch.outcome != 'success'
-      run: echo 'error detected in branch'
+      uses: dawidd6/action-delete-branch@v3
+      with:
+        github_token: ${{secrets.TOKEN}}
+        branches: ${GITHUB_REF##*/}
 
     - name: alternative 
       if: steps.scan_branch.outcome == 'success'
