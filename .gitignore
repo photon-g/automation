@@ -2,3 +2,5 @@
 *.yaml.swm
 *.yaml.swp
 *.swp
+*.log
+*.swo
