@@ -4,6 +4,7 @@ on: [push]
 
 env:
   STK: ${{secrets.PTBOT}}
+  GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
 jobs:
   build:
@@ -43,6 +44,16 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
-
+    
+    - name: checkout main    
+      uses: actions/checkout@v3
+      with:
+        ref: main 
+    
+    - name: branch creator 
+      uses: peterjgrainger/action-create-branch@v2.2.0
+      with:
+        branch: 'dev'
+    
     - name: displayer
       run: echo "to oblivion"
