@@ -59,4 +59,4 @@ jobs:
         branch: 'dev'
     
     - name: displayer
-      run: echo "to oblivion"
+      run: echo "to dark oblivion"
