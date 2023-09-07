@@ -5,6 +5,9 @@ on: [push]
 env:
   STK: ${{secrets.PTBOT}}
   GITHUB_TOKEN: ${{ secrets.TOKEN }}
+  CBRANCH: ${{ github.ref }}
+  COWNER: ${{ github.context.repo.owner }}
+  CREPO: ${{ github.context.repo.repo }}
 
 jobs:
   build:
@@ -31,14 +34,7 @@ jobs:
 
     - name: scan cond
       if: steps.scan_branch.outcome != 'success'
-      uses: dawidd6/action-delete-branch@v3
-      with:
-        github_token: ${{secrets.TOKEN}}
-        branches: ${GITHUB_REF##*/}
-
-    - name: alternative 
-      if: steps.scan_branch.outcome == 'success'
-      run: echo running on branch ${GITHUB_REF##*/}
+      run: python remove.py
 
   merge:
     needs: build
