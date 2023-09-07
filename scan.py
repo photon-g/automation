@@ -28,7 +28,7 @@ logger.addHandler(logger_file_handler)
 if __name__ == "__main__":
     l_notifier = Notifier(CHAN, BOT, os.environ["STK"])
     l_git_mgr = GitMgr(GIT_ARTIFACTS_CONF)
-   
+    logger.debug("adding logging")   
     execute_predicat(l_notifier.send_msg,l_git_mgr.current_branch())
     execute_predicat(l_notifier.send_msg,l_git_mgr.commit_msg())
 
