@@ -7,7 +7,6 @@ token = os.environ["GITHUB_TOKEN"]
 git_repo = os.environ["GITHUB_REPOSITORY"]
 
 #headers = {'Authorization': 'token ' + token}
-
 #curl method
 api_method=f"https://api.github.com/repos/{git_repo}/git/{current_ref}"
 h_op_1="Accept: application/vnd.github+json"
