@@ -49,10 +49,5 @@ jobs:
       with:
         ref: main 
     
-    - name: branch creator 
-      uses: peterjgrainger/action-create-branch@v2.2.0
-      with:
-        branch: 'dev'
-    
     - name: displayer
       run: echo "to dark oblivion"
